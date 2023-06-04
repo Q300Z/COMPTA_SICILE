@@ -1,8 +1,18 @@
 <template>
   <v-app-bar :elevation="2">
     <v-app-bar-title>Factures</v-app-bar-title>
+    <v-btn prepend-icon="mdi-tab" stacked>Manage tab</v-btn>
   </v-app-bar>
-  <v-card>
+  <div class="text-center" v-if="load">
+    <v-progress-circular
+      indeterminate
+      size="80"
+      width="10"
+      color="primary"
+    ></v-progress-circular>
+  </div>
+
+  <v-card v-else>
     <v-tabs v-model="tab" bg-color="primary" align-tabs="center" grow>
       <v-tab v-for="item in categorie" :key="item" :value="item">
         {{ item }}
@@ -42,6 +52,7 @@ export default {
       "editFac",
       "preuve",
       "type",
+      "load",
     ]),
     formTitle() {
       return this.editedIndex === -1 ? "Ajout" : "Modification";

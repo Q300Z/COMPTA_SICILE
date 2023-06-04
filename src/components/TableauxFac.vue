@@ -8,7 +8,6 @@
     v-model="selected"
     multi-sort
     class="elevation-1"
-    density="compact"
     hover
   >
     <template v-slot:top>

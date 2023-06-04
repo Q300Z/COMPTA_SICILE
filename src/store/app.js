@@ -15,6 +15,7 @@ export const useAppStore = defineStore("app", {
     tab: "Bouffe",
     dialog: false,
     type: "Ajout",
+    load: false,
   }),
   actions: {
     dateNow() {
@@ -72,7 +73,7 @@ export const useAppStore = defineStore("app", {
      */
     facturesFiltred(filtre) {
       if (this.compta) {
-        //this.getFacture();
+        this.getFacture();
       }
       return this.compta.filter((facture) => facture.categorie === filtre);
     },
@@ -93,6 +94,9 @@ export const useAppStore = defineStore("app", {
     },
     async getFacture() {
       this.compta = await api.getAllFac();
+      if (!this.compta) {
+        this.load = true;
+      }
     },
   },
 });
