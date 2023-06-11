@@ -1,7 +1,8 @@
+<!-- eslint-disable vue/multi-word-component-names -->
 <template>
   <v-app-bar :elevation="2">
     <v-app-bar-title>Factures</v-app-bar-title>
-    <v-btn prepend-icon="mdi-tab" stacked>Manage tab</v-btn>
+    <DialogueTab v-if="false" />
   </v-app-bar>
   <div class="text-center" v-if="load">
     <v-progress-circular
@@ -9,7 +10,9 @@
       size="80"
       width="10"
       color="primary"
-    ></v-progress-circular>
+    ></v-progress-circular
+    ><br />
+    <v-btn color="primary" class="ma-5" @click="getFacture">Refresh</v-btn>
   </div>
 
   <v-card v-else>
@@ -38,11 +41,15 @@
 <script>
 import Tableaux from "@/components/TableauxFac.vue";
 import Dialogue from "@/components/DialogueFac.vue";
+import DialogueTab from "@/components/DialogueTab.vue";
 import { mapWritableState, mapActions } from "pinia";
 import { useAppStore } from "@/store/app.js";
 
 export default {
-  components: { Tableaux, Dialogue },
+  created() {
+    this.getFacture();
+  },
+  components: { Tableaux, Dialogue, DialogueTab },
   computed: {
     ...mapWritableState(useAppStore, [
       "categorie",
@@ -63,6 +70,7 @@ export default {
       "modifyEditedIndex",
       "removeFacture",
       "modifyDialog",
+      "getFacture",
     ]),
 
     modify(item) {

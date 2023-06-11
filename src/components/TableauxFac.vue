@@ -1,3 +1,4 @@
+<!-- eslint-disable vue/valid-v-slot -->
 <template>
   <v-data-table
     :headers="headers"
@@ -17,9 +18,15 @@
         class="pa-4"
         elevation="2"
         variant="outlined"
+        density="comfortable"
       >
         <template v-slot:append>
-          <v-btn stacked @click="$emit('add')" elevation="2" variant="outlined"
+          <v-btn
+            stacked
+            @click="$emit('add')"
+            elevation="2"
+            variant="outlined"
+            density="comfortable"
             >Add</v-btn
           >
         </template></v-text-field
@@ -47,12 +54,10 @@ import DialogueImage from "./DialogueImage.vue";
 export default {
   components: { DialogueImage },
   props: { cat: String },
+  mounted() {},
   methods: {
-    ...mapActions(useAppStore, ["facturesFiltred", "getFacture"]),
+    ...mapActions(useAppStore, ["facturesFiltred"]),
     ...mapActions(useAppStore, ["addFacture"]),
-  },
-  mounted() {
-    this.getFacture();
   },
   data() {
     return {

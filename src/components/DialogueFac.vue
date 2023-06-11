@@ -5,7 +5,7 @@
       transition="dialog-bottom-transition"
       style="width: 500px"
     >
-      <v-card>
+      <v-card class="px-3 pt-5">
         <v-card-title>{{ this.type }} d'une facture</v-card-title>
         <v-container>
           <v-form>

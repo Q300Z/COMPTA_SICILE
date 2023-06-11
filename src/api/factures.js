@@ -46,7 +46,7 @@ export default {
       const formData = new FormData();
       formData.append("fac", JSON.stringify(editFac));
 
-      if (preuve) {
+      if (preuve && preuve.length > 0) {
         formData.append("preuve", preuve[0], preuve[0].name);
       }
       const response = await fetch(API_URL + "/" + editFac["_id"], {
