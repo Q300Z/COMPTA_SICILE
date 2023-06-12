@@ -24,7 +24,7 @@ import api from "@/api/factures.js";
 
 export const useAppStore = defineStore("app", {
   state: () => ({
-    API_URL: "http://localhost:3001",
+    API_URL: "http://192.168.1.103:3001",
     compta: [],
     categorie: [],
     editedIndex: -1,
