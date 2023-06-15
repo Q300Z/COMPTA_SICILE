@@ -1,4 +1,4 @@
-const API_URL = "http://192.168.1.103:3001";
+const API_URL = "https://api.qalpuch.cc";
 
 export default {
   async getAllFac() {
