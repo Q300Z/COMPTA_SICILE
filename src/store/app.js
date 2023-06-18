@@ -24,7 +24,8 @@ import api from "@/api/factures.js";
 
 export const useAppStore = defineStore("app", {
   state: () => ({
-    API_URL: "http://localhost:3001",
+    API_URL: "https://api.qalpuch.cc",
+
     compta: [],
     categorie: [],
     editedIndex: -1,
