@@ -24,7 +24,7 @@ import api from "@/api/factures.js";
 
 export const useAppStore = defineStore("app", {
   state: () => ({
-    API_URL: "http://192.168.1.103:3001",
+    API_URL: "http://localhost:3001",
     compta: [],
     categorie: [],
     editedIndex: -1,
@@ -64,7 +64,6 @@ export const useAppStore = defineStore("app", {
         if (data) {
           this.editFac["_id"] = data.data._id;
           this.editFac["preuve"] = data.data.preuve;
-
           this.compta.push(this.editFac);
 
           this.modifyDialog();
@@ -185,6 +184,7 @@ export const useAppStore = defineStore("app", {
      * @returns {Promise<void>}
      */
     async getFacture() {
+      console.log(import.meta.env.KEY);
       this.compta = await api.getAllFac();
       if (this.compta !== null) {
         this.categorie = this.supprDoublons(this.compta).sort();

@@ -2,7 +2,7 @@
 <template>
   <v-app-bar :elevation="2">
     <v-app-bar-title>Factures</v-app-bar-title>
-    <DialogueTab v-if="false" />
+    <DialogueTab v-if="load" />
   </v-app-bar>
   <div class="text-center" v-if="load">
     <v-progress-circular
@@ -15,8 +15,9 @@
     <v-btn color="primary" class="ma-5" @click="getFacture">Refresh</v-btn>
   </div>
 
-  <v-card v-else>
-    <v-tabs v-model="tab" bg-color="primary" align-tabs="center" grow>
+  <v-card v-else elevation="0">
+    <DialogueTab v-if="categorie.length <= 0" class="ma-10"></DialogueTab>
+    <v-tabs v-model="tab" bg-color="primary" align-tabs="center" grow v-else>
       <v-tab v-for="item in categorie" :key="item" :value="item">
         {{ item }}
       </v-tab>
